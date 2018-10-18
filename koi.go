@@ -5,11 +5,10 @@ import (
 )
 
 type koi struct {
-	filename	string
-	scroll		int
-
-	buffer		*buffer
-	cursor		*cursor
+	filename string
+	scroll   int
+	buffer   *buffer
+	cursor   *cursor
 }
 
 func newKoi() *koi {
@@ -26,7 +25,7 @@ func newKoi() *koi {
 }
 
 func (k *koi) handle(ev *termbox.Event) bool {
-	switch (ev.Type) {
+	switch ev.Type {
 	case termbox.EventKey:
 		return k.key(ev)
 	}
@@ -35,7 +34,7 @@ func (k *koi) handle(ev *termbox.Event) bool {
 }
 
 func (k *koi) key(ev *termbox.Event) bool {
-	switch (ev.Key) {
+	switch ev.Key {
 	case termbox.KeyCtrlC:
 		return false
 	case termbox.KeyCtrlK:
@@ -56,7 +55,7 @@ func (k *koi) cursorUp() {
 }
 
 func (k *koi) cursorDown() {
-	if k.cursor.y < k.buffer.lines() - 1 {
+	if k.cursor.y < k.buffer.lines()-1 {
 		k.cursor.down()
 	}
 }
@@ -77,7 +76,7 @@ func (k *koi) loop() {
 
 	for {
 		select {
-		case ev := <- events:
+		case ev := <-events:
 			ok := k.handle(&ev)
 			if !ok {
 				return

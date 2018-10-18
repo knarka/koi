@@ -1,7 +1,7 @@
 package main
 
 type buffer struct {
-	content		[]string
+	content []string
 }
 
 func newBuffer() *buffer {
@@ -14,12 +14,12 @@ func newBuffer() *buffer {
 }
 
 func (b *buffer) addLine(line string) {
-	b.content = b.content[:len(b.content) + 1]
-	b.content[len(b.content) - 1] = line
+	b.content = b.content[:len(b.content)+1]
+	b.content[len(b.content)-1] = line
 }
 
 func (b *buffer) getLine(i int) string {
-	return b.content[i - 1]
+	return b.content[i-1]
 }
 
 func (b *buffer) lines() int {

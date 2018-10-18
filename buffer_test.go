@@ -36,7 +36,6 @@ func TestLines(t *testing.T) {
 	b.addLine("hello world")
 	b.addLine("привет мир")
 
-
 	if b.lines() != 2 {
 		t.Error("Buffer should have 2 lines after adding 2 lines.")
 	}

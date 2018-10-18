@@ -1,8 +1,8 @@
 package main
 
 type cursor struct {
-	x	int
-	y	int
+	x int
+	y int
 }
 
 func newCursor() *cursor {
