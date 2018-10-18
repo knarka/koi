@@ -13,6 +13,5 @@ script:
         - $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN
 
 os:
-        - windows
         - linux
         - osx
