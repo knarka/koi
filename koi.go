@@ -56,7 +56,7 @@ func (k *koi) cursorUp() {
 }
 
 func (k *koi) cursorDown() {
-	if k.cursor.y < k.buffer.size() - 1 {
+	if k.cursor.y < k.buffer.lines() - 1 {
 		k.cursor.down()
 	}
 }

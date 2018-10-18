@@ -15,17 +15,17 @@ func newCursor() *cursor {
 }
 
 func (c *cursor) left() {
-	c.x -= 1
+	c.x--
 }
 
 func (c *cursor) right() {
-	c.x += 1
+	c.x++
 }
 
 func (c *cursor) up() {
-	c.y -= 1
+	c.y--
 }
 
 func (c *cursor) down() {
-	c.y += 1
+	c.y++
 }

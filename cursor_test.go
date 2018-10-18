@@ -12,7 +12,7 @@ func TestNewCursor(t *testing.T) {
 	}
 }
 
-func TestMovement(t *testing.T) {
+func TestCursorMovement(t *testing.T) {
 	c := newCursor()
 
 	c.left()
