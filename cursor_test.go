@@ -8,7 +8,7 @@ func TestNewCursor(t *testing.T) {
 	c := newCursor()
 
 	if c.x != 0 || c.y != 0 {
-		t.Error("Cursor did not initialize at 0, 0.")
+		t.Error("cursor did not initialize at 0, 0")
 	}
 }
 
@@ -23,6 +23,6 @@ func TestCursorMovement(t *testing.T) {
 	c.down()
 
 	if c.x != -1 || c.y != 1 {
-		t.Error("Cursor did not move correctly.")
+		t.Error("cursor did not move correctly")
 	}
 }
