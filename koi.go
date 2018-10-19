@@ -27,18 +27,18 @@ func newKoi() *koi {
 func (k *koi) handle(ev *termbox.Event) bool {
 	switch ev.Type {
 	case termbox.EventKey:
-		return k.key(ev)
+		return k.key(ev.Key)
 	}
 
 	return true
 }
 
-func (k *koi) key(ev *termbox.Event) bool {
-	switch ev.Key {
+func (k *koi) key(key termbox.Key) bool {
+	switch key {
 	case termbox.KeyCtrlC:
 		return false
 	case termbox.KeyCtrlK:
-		k.cursorDown()
+		k.cursorUp()
 	case termbox.KeyCtrlJ:
 		k.cursorDown()
 	default:
