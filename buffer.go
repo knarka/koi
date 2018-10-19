@@ -18,8 +18,8 @@ func (b *buffer) addLine(line string) {
 	b.content[len(b.content)-1] = line
 }
 
-func (b *buffer) getLine(i int) string {
-	return b.content[i-1]
+func (b *buffer) getLine(i, scroll int) string {
+	return b.content[i+scroll]
 }
 
 func (b *buffer) lines() int {

@@ -21,7 +21,7 @@ func TestAddLine(t *testing.T) {
 
 	b.addLine("hello world")
 
-	if len(b.content) != 1 || b.getLine(1) != "hello world" {
+	if len(b.content) != 1 || b.getLine(0, 0) != "hello world" {
 		t.Error("could not succesfully add a line.")
 	}
 }

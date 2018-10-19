@@ -41,8 +41,10 @@ func (k *koi) key(key termbox.Key) bool {
 		k.cursorUp()
 	case termbox.KeyCtrlJ:
 		k.cursorDown()
-	default:
-		return true
+	case termbox.KeyCtrlH:
+		k.cursorLeft()
+	case termbox.KeyCtrlL:
+		k.cursorRight()
 	}
 
 	return true
@@ -55,12 +57,39 @@ func (k *koi) cursorUp() {
 }
 
 func (k *koi) cursorDown() {
-	if k.cursor.y < k.buffer.lines()-1 {
+	if k.cursor.y < k.buffer.lines()-1 { // TODO: compensate for scroll
 		k.cursor.down()
 	}
 }
 
+func (k *koi) cursorLeft() {
+	if k.cursor.x > 0 {
+		k.cursor.left()
+	}
+}
+
+func (k *koi) cursorRight() {
+	if k.cursor.x < len(k.buffer.getLine(k.cursor.y, k.scroll)) {
+		k.cursor.right()
+	}
+}
+
+func (k *koi) drawBuffer(x1, x2, y1, y2, xOff, yOff int) {
+	for y := y1; y < y2 && y < k.buffer.lines(); y++ {
+		line := k.buffer.getLine(y, k.scroll)
+		for x := x1; x < x2 && x < len(line); x++ {
+			termbox.SetCell(x+xOff, y+yOff, rune(line[x]), termbox.ColorDefault, termbox.ColorDefault)
+		}
+	}
+}
+
 func (k *koi) draw() {
+	width, height := termbox.Size()
+
+	termbox.Clear(termbox.ColorDefault, termbox.ColorDefault)
+
+	k.drawBuffer(0, width, 0, height, 0, 0)
+
 	termbox.SetCursor(k.cursor.x, k.cursor.y)
 	termbox.Flush()
 }
