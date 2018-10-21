@@ -1,11 +1,11 @@
-package main
+package cursor
 
 import (
 	"testing"
 )
 
 func TestNewCursor(t *testing.T) {
-	c := newCursor()
+	c := NewCursor()
 
 	if c.x != 0 || c.y != 0 {
 		t.Error("cursor did not initialize at 0, 0")
@@ -13,14 +13,14 @@ func TestNewCursor(t *testing.T) {
 }
 
 func TestCursorMovement(t *testing.T) {
-	c := newCursor()
+	c := NewCursor()
 
-	c.left()
-	c.left()
-	c.right()
-	c.up()
-	c.down()
-	c.down()
+	c.Left()
+	c.Left()
+	c.Right()
+	c.Up()
+	c.Down()
+	c.Down()
 
 	if c.x != -1 || c.y != 1 {
 		t.Error("cursor did not move correctly")

@@ -2,6 +2,8 @@ package main
 
 import (
 	"github.com/nsf/termbox-go"
+
+	"github.com/knarka/koi/koi"
 )
 
 func main() {
@@ -12,8 +14,7 @@ func main() {
 
 	defer termbox.Close()
 
-	koi := newKoi()
+	koi := koi.NewKoi()
 
-	koi.draw()
-	koi.loop()
+	koi.Loop()
 }

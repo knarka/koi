@@ -1,11 +1,11 @@
-package main
+package buffer
 
-type buffer struct {
+type TextBuffer struct {
 	content []string
 }
 
-func newBuffer() *buffer {
-	b := new(buffer)
+func NewBuffer() *TextBuffer {
+	b := new(TextBuffer)
 
 	b.content = make([]string, 1024)
 	b.content = b.content[:0]
@@ -13,15 +13,15 @@ func newBuffer() *buffer {
 	return b
 }
 
-func (b *buffer) addLine(line string) {
+func (b *TextBuffer) AddLine(line string) {
 	b.content = b.content[:len(b.content)+1]
 	b.content[len(b.content)-1] = line
 }
 
-func (b *buffer) getLine(i, scroll int) string {
+func (b *TextBuffer) GetLine(i, scroll int) string {
 	return b.content[i+scroll]
 }
 
-func (b *buffer) lines() int {
+func (b *TextBuffer) Lines() int {
 	return len(b.content)
 }

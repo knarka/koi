@@ -9,7 +9,7 @@ install:
         - go get github.com/nsf/termbox-go
 
 script:
-        - go test -v -covermode=count -coverprofile=coverage.out
+        - go test ./... -v -covermode=count -coverprofile=coverage.out
         - $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken 4QQQxffQ92EBsN1Tob5MOAToyEy8FSGgx
 
 os:
